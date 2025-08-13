@@ -44,44 +44,52 @@ namespace Biograf_Opg
             // Booking fejlede
             return false; 
         }
+        
+
         public void TegnSædeoversigt()
         {
             Console.Clear();
-            Console.WriteLine($"--- Sædeoversigt for Sal {SalNummer}: {Film.Titel} ---");
+
+            Console.WriteLine($"                 ***** Sædeoversigt for Sal {SalNummer}: {Film.Titel} *****", 4);
             Console.WriteLine();
 
-            // Udskriv sædenumre i toppen
-            Console.Write("   ");
+            // Udskriv sædenumre i toppen med ekstra mellemrum for at flytte dem til højre
+            Console.WriteLine("             ");
             for (int sæde = 0; sæde < AntalSæde; sæde++)
             {
-                Console.WriteLine($"{(sæde + 1).ToString().PadLeft(2)} ");
+                
+                Console.Write($"  {(sæde + 1).ToString().PadLeft(0)}");
             }
             Console.WriteLine();
-            Console.WriteLine("    " + new string('_', AntalSæde* 3));
+            Console.WriteLine("    " + new string('_', AntalSæde* 4));
 
             // Gå gennem alle rækker og sæder og tegn dem
             for (int række = 0; række < AntalRække; række++)
             {
-                Console.Write($"R{række + 1} | ");
+                Console.Write($" R{række + 1} | ");
                 for (int sæde = 0; sæde < AntalSæde; sæde++)
                 {
                     if (Sæder[række, sæde])
                     {
                         // Hvis sædet er optaget, farv det rødt
                         Console.ForegroundColor = ConsoleColor.Red;
+                        // Udskriv et farvet kvadrat
+                        Console.Write("[X]");
                     }
                     else
                     {
                         // Hvis sædet er ledigt, farv det grønt
                         Console.ForegroundColor = ConsoleColor.Green;
+                        // Udskriv et farvet kvadrat
+                        Console.Write("[X] ");
                     }
-                    // Udskriv et farvet kvadrat
-                    Console.WriteLine(" ⬛ ");
+                   
                     // Sørg for at farven nulstilles efter sædet
                     Console.ResetColor();
-                    Console.WriteLine(" ");
+                   
                 }
                 Console.WriteLine();
+                
             }
         }
     }
