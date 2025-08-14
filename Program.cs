@@ -66,6 +66,7 @@
             Console.SetCursorPosition(leftPadding, Console.CursorTop);
             Console.WriteLine(text);
         }
+
         static void VisHovedMenu(List<Sal> saler, List<Film> filmListe)
         {
             bool isRunning = true;
